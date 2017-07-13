@@ -1,0 +1,26 @@
+<%= simple_form_for(@invoice, url: invoice_confirm_confirm_path, method: :put) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= @invoice.reference_number%>
+      <br>
+      <%= @invoice.amount %>
+      <br>
+      <%= @invoice.currency %>
+      <br>
+      <%= hidden_field_tag :auth_token, params[:auth_token] %>
+
+      <%= hidden_field_tag :security_token, params[:security_token] %>
+      <%= f.input :customer_firstname %>
+      <%= f.input :customer_lastname %>
+      <%= f.input :customer_email %>
+      <%= f.input :bill_address1 %>
+      <%= f.input :bill_city %>
+      <%= f.input :bill_country %>
+      <%= f.input :client_phone %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+<% end %>

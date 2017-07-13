@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_firstname: MyString
+  customer_lastname: MyString
+  customer_email: MyString
+  bill_address1: MyString
+  bill_city: MyString
+  bill_country: MyString
+  client_phone: MyString
+  amount: 9.99
+  currency: MyString
+  reference_number: MyString
+  transaction_type: MyString
+  transaction_uuid: MyString
+
+two:
+  customer_firstname: MyString
+  customer_lastname: MyString
+  customer_email: MyString
+  bill_address1: MyString
+  bill_city: MyString
+  bill_country: MyString
+  client_phone: MyString
+  amount: 9.99
+  currency: MyString
+  reference_number: MyString
+  transaction_type: MyString
+  transaction_uuid: MyString

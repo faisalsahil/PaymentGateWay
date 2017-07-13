@@ -1,0 +1,41 @@
+<h1>Invoices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customer firstname</th>
+      <th>Customer lastname</th>
+      <th>Customer email</th>
+      <th>Amount</th>
+      <th>Currency</th>
+      <th>Invoice Numberr</th>
+      <th>Checkout Link</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= invoice.customer_firstname %></td>
+        <td><%= invoice.customer_lastname %></td>
+        <td><%= invoice.customer_email %></td>
+        <td><%= invoice.amount %></td>
+        <td><%= invoice.currency %></td>
+        <td><%= invoice.reference_number %></td>
+        <td>
+          <% if invoice.invoice_status == 'pending' %>
+            <%= link_to "Checkout link", invoice_confirm_edit_path({auth_token: invoice.auth_token, security_token: invoice.security_token}) %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Show', invoice %></td>
+        <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+        <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Invoice', new_invoice_path %>

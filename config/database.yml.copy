@@ -1,0 +1,15 @@
+development:
+  adapter:  mysql2
+  encoding:  utf8
+  reconnect: false
+  database: <%= ENV['HBL_DB_NAME_' + ENV['HBL_MODE']]%>
+  username: <%= ENV['HBL_DB_HOST_' + ENV['HBL_MODE']]%>
+  password: <%= ENV['HBL_DB_HOST_' + ENV['HBL_MODE']]%>
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: <%= ENV['HBL_DB_NAME_' + ENV['HBL_MODE']]%>
+  username: <%= ENV['HBL_DB_HOST_' + ENV['HBL_MODE']]%>
+  password: <%= ENV['HBL_DB_HOST_' + ENV['HBL_MODE']]%>

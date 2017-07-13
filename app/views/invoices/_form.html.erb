@@ -1,0 +1,21 @@
+<%= simple_form_for(@invoice) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :reference_number, label: 'Invoice Number' %>
+    <%= f.input :amount %>
+    <%= f.currency_select :currency %>
+
+    <%= f.input :customer_firstname %>
+    <%= f.input :customer_lastname %>
+    <%= f.input :customer_email %>
+    <%= f.input :bill_address1 %>
+    <%= f.input :bill_city %>
+    <%= f.input :bill_country %>
+    <%= f.input :client_phone %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

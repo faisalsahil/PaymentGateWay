@@ -1,0 +1,2 @@
+module InvoiceConfirmHelper
+end

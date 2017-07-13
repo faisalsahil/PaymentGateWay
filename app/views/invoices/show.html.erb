@@ -1,0 +1,52 @@
+<p>
+  <strong>Amount:</strong>
+  <%= @invoice.amount %>
+</p>
+
+<p>
+  <strong>Currency:</strong>
+  <%= @invoice.currency %>
+</p>
+
+<p>
+  <strong>Reference number:</strong>
+  <%= @invoice.reference_number %>
+</p>
+
+<p>
+  <strong>Customer firstname:</strong>
+  <%= @invoice.customer_firstname %>
+</p>
+
+<p>
+  <strong>Customer lastname:</strong>
+  <%= @invoice.customer_lastname %>
+</p>
+
+<p>
+  <strong>Customer email:</strong>
+  <%= @invoice.customer_email %>
+</p>
+
+<p>
+  <strong>Bill address1:</strong>
+  <%= @invoice.bill_address1 %>
+</p>
+
+<p>
+  <strong>Bill city:</strong>
+  <%= @invoice.bill_city %>
+</p>
+
+<p>
+  <strong>Bill country:</strong>
+  <%= @invoice.bill_country %>
+</p>
+
+<p>
+  <strong>Client phone:</strong>
+  <%= @invoice.client_phone %>
+</p>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>
