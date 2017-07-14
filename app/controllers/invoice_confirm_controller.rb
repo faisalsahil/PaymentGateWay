@@ -35,16 +35,16 @@ class InvoiceConfirmController < ApplicationController
   def verify
     @invoice     = Invoice.find_by_auth_token_and_security_token(params[:auth_token], params[:security_token])
 
-    @signed_field_names = 'access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency'
-    @unsigned_field_names = 'bill_to_forename,bill_to_surname,bill_to_email,bill_to_address_line1,bill_to_address_city,bill_to_address_country'
-    # @unsigned_field_names = ''
+    # ,bill_to_address_line1,bill_to_address_city,bill_to_address_country,bill_to_email,bill_to_surname,bill_to_forename
+    @signed_field_names = 'access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,bill_to_address_line1,bill_to_address_city,bill_to_address_country,bill_to_email,bill_to_surname,bill_to_forename'
+    @unsigned_field_names = ''
     
-    params[:bill_to_forename] = @invoice.customer_lastname
-    params[:bill_to_surname] = @invoice.customer_firstname
-    params[:bill_to_email] = @invoice.customer_email
-    params[:bill_to_address_line1] = @invoice.bill_address1
-    params[:bill_to_address_city] = @invoice.bill_city
+    params[:bill_to_address_line1]   = @invoice.bill_address1
+    params[:bill_to_address_city]    = @invoice.bill_city
     params[:bill_to_address_country] = @invoice.bill_country
+    params[:bill_to_email]           = @invoice.customer_email
+    params[:bill_to_surname]         = @invoice.customer_firstname
+    params[:bill_to_forename] = @invoice.customer_lastname
     
     params[:access_key] = ENV['HBL_ACCESS_KEY_' + ENV['HBL_MODE']]
     params[:profile_id] = ENV['HBL_PROFILE_KEY_' + ENV['HBL_MODE']]
@@ -63,7 +63,6 @@ class InvoiceConfirmController < ApplicationController
   end
   
   def success
-    
   end
   
   def failure

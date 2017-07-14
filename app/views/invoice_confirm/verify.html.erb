@@ -56,8 +56,8 @@
   <%= hidden_field_tag :bill_to_address_city, @invoice.bill_city %>
   <%= hidden_field_tag :bill_to_address_country, @invoice.bill_country %>
   <%= hidden_field_tag :bill_to_email, @invoice.customer_email %>
-  <%= hidden_field_tag :bill_to_forename, @invoice.customer_lastname %>
   <%= hidden_field_tag :bill_to_surname, @invoice.customer_firstname %>
+  <%= hidden_field_tag :bill_to_forename, @invoice.customer_lastname %>
 
   <%= hidden_field_tag :access_key, ENV['HBL_ACCESS_KEY_' + ENV['HBL_MODE']] %>
   <%= hidden_field_tag :profile_id, ENV['HBL_PROFILE_KEY_' + ENV['HBL_MODE']] %>

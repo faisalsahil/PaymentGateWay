@@ -1,1 +1,29 @@
-Success
+<% if params[:decision] == 'ACCEPTED' %>
+    <fieldset>
+      <legend>Payment Response</legend>
+      <h3>
+        Dear Customer, Thank you for your payment, Your transaction has been received successfully and your account will be updated accordingly.
+      </h3>
+    </fieldset>
+<% elsif params[:decision] == 'DECLINE' %>
+    <fieldset>
+      <legend>Payment Response</legend>
+      <h3>
+        Dear Customer, Your card transaction has been declined by your card issuing bank, Kindly contact your card issuing bank for details.
+      </h3>
+    </fieldset>
+<% elsif params[:decision] == 'REJECTED' %>
+    <fieldset>
+      <legend>Payment Response</legend>
+      <h3>
+        Dear Customer, Your card transaction has been received and under review, our representative will contact you shortly for further process
+      </h3>
+    </fieldset>
+<% else %>
+    <fieldset>
+      <legend>Payment Response</legend>
+      <h3>
+        Payment is under process
+      </h3>
+    </fieldset>
+<% end %>
