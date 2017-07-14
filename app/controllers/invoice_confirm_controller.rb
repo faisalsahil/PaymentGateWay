@@ -63,6 +63,17 @@ class InvoiceConfirmController < ApplicationController
   end
   
   def success
+    @invoice = Invoice.find_by_transaction_uuid(params[:req_transaction_uuid])
+    if @invoice.present?
+      @invoice.req_card_expiry_date       = params[:req_card_expiry_date]
+      @invoice.reason_code                = params[:reason_code]
+      @invoice.req_device_fingerprint_id  = params[:req_device_fingerprint_id]
+      @invoice.decision                   = params[:decision]
+      @invoice.message                    = params[:message]
+      @invoice.transaction_id             = params[:transaction_id]
+      @invoice.payer_authentication_xid   = params[:payer_authentication_xid]
+      @invoice.save
+    end
   end
   
   def failure

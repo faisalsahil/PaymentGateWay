@@ -1,4 +1,4 @@
-<% if params[:decision] == 'ACCEPTED' %>
+<% if params[:decision] == 'ACCEPT' %>
     <fieldset>
       <legend>Payment Response</legend>
       <h3>
@@ -12,7 +12,7 @@
         Dear Customer, Your card transaction has been declined by your card issuing bank, Kindly contact your card issuing bank for details.
       </h3>
     </fieldset>
-<% elsif params[:decision] == 'REJECTED' %>
+<% elsif params[:decision] == 'REJECT' %>
     <fieldset>
       <legend>Payment Response</legend>
       <h3>
