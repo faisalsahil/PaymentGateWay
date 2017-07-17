@@ -1,4 +1,5 @@
 class InvoiceConfirmController < ApplicationController
+  # layout false
   
   def edit
     @invoice = Invoice.find_by_auth_token_and_security_token(params[:auth_token], params[:security_token])
@@ -13,7 +14,6 @@ class InvoiceConfirmController < ApplicationController
     @invoice = Invoice.find_by_auth_token_and_security_token(params[:auth_token], params[:security_token])
     
     if @invoice.present? #&& @invoice.invoice_status == 'pending'
-      
       @invoice.attributes         = invoice_confirm_params
       @invoice.is_confirm_invoice = true
       @invoice.signed_date_time   = signed_date_time

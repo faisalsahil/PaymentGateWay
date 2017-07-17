@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   put 'invoice_confirm/confirm'
   
   post 'invoice_confirm/success'
-  post 'invoice_confirm/failure'
+  # post 'invoice_confirm/failure'
   
 
   resources :invoices

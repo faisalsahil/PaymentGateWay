@@ -1,16 +1,16 @@
 <h1>Invoices</h1>
-
-<table>
+<%= link_to 'New Invoice', new_invoice_path, class: 'btn btn-primary pull-right' %>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Customer firstname</th>
-      <th>Customer lastname</th>
-      <th>Customer email</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
       <th>Amount</th>
       <th>Currency</th>
-      <th>Invoice Numberr</th>
+      <th>Invoice Number</th>
       <th>Checkout Link</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -26,11 +26,15 @@
         <td>
           <% if invoice.invoice_status == 'pending' %>
             <%= link_to "Checkout link", invoice_confirm_edit_path({auth_token: invoice.auth_token, security_token: invoice.security_token}) %>
+          <% else %>
+            <%= "#{invoice.invoice_status}" %>
           <% end %>
         </td>
-        <td><%= link_to 'Show', invoice %></td>
-        <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-        <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Show', invoice, class: 'btn btn-sm btn-primary' %>
+          <%= link_to 'Edit', edit_invoice_path(invoice), class: 'btn btn-sm btn-success' %>
+          <%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm  btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +42,4 @@
 
 <br>
 
-<%= link_to 'New Invoice', new_invoice_path %>
+

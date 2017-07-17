@@ -1,52 +1,33 @@
-<p>
-  <strong>Amount:</strong>
-  <%= @invoice.amount %>
-</p>
+<div class="col-md-3">
+  <fieldset class="fieldset-border">
+    <legend class="fieldset-border">Invoice details</legend>
+    <b>Invoice number:</b> <%= "#{@invoice.reference_number}" %><br>
+    <b>Amount:</b>         <%= "#{@invoice.amount}" %><br>
+    <b>Currency:</b>      <%= "#{@invoice.currency}" %><br>
+  </fieldset>
+</div>
 
-<p>
-  <strong>Currency:</strong>
-  <%= @invoice.currency %>
-</p>
+<div class="col-md-3">
+  <fieldset class="fieldset-border">
+    <legend class="fieldset-border">Personal Information</legend>
+    <b>First Name:</b> <%= "#{@invoice.customer_firstname}" %><br>
+    <b>Last Name:</b>  <%= "#{@invoice.customer_lastname}" %><br>
+    <b>Email:</b>      <%= "#{@invoice.customer_email}" %><br>
+    <b>Phone:</b>      <%= "#{@invoice.client_phone}" %><br>
+  </fieldset>
+</div>
 
-<p>
-  <strong>Reference number:</strong>
-  <%= @invoice.reference_number %>
-</p>
+<div class="col-md-3">
+  <fieldset class="fieldset-border">
+    <legend class="fieldset-border">Billing Information</legend>
+    <b>Billing Address:</b>   <%= "#{@invoice.bill_address1}" %><br>
+    <b>Billing City:</b>      <%= "#{@invoice.bill_city}" %><br>
+    <b>Billing Country:</b>   <%= "#{@invoice.bill_country}" %><br>
+  </fieldset>
+</div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
-<p>
-  <strong>Customer firstname:</strong>
-  <%= @invoice.customer_firstname %>
-</p>
+<%= link_to 'Back', invoices_path, class: 'btn btn-default' %>
+<%= link_to 'Edit', edit_invoice_path(@invoice), class: 'btn btn-primary' %>
 
-<p>
-  <strong>Customer lastname:</strong>
-  <%= @invoice.customer_lastname %>
-</p>
 
-<p>
-  <strong>Customer email:</strong>
-  <%= @invoice.customer_email %>
-</p>
-
-<p>
-  <strong>Bill address1:</strong>
-  <%= @invoice.bill_address1 %>
-</p>
-
-<p>
-  <strong>Bill city:</strong>
-  <%= @invoice.bill_city %>
-</p>
-
-<p>
-  <strong>Bill country:</strong>
-  <%= @invoice.bill_country %>
-</p>
-
-<p>
-  <strong>Client phone:</strong>
-  <%= @invoice.client_phone %>
-</p>
-
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
