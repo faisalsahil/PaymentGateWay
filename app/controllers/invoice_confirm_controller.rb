@@ -35,8 +35,11 @@ class InvoiceConfirmController < ApplicationController
   
   def verify
     @invoice              = Invoice.find_by_auth_token_and_security_token(params[:auth_token],params[:security_token])
-
-    @signed_field_names   = 'consumer_id,customer_ip_address,access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,bill_to_forename,bill_to_surname,bill_to_email,bill_to_address_line1,bill_to_address_city,bill_to_address_postal_code,bill_to_address_state,bill_to_address_country,bill_to_phone,ship_to_forename,ship_to_surname,ship_to_address_line1,ship_to_address_city,ship_to_address_postal_code,ship_to_address_state,ship_to_address_country,ship_to_phone'
+    
+    @signed_field_names = 'merchant_define_data1,consumer_id,customer_ip_address,access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,'
+    @signed_field_names = @signed_field_names + 'bill_to_forename,bill_to_surname,bill_to_email,bill_to_address_line1,bill_to_address_city,bill_to_address_country,bill_to_phone,'
+    @signed_field_names = @signed_field_names + 'ship_to_forename,ship_to_surname,ship_to_address_line1,ship_to_address_city,ship_to_address_postal_code,ship_to_address_state,ship_to_address_country,ship_to_phone'
+    
     @unsigned_field_names = ''
     
     params[:consumer_id]      = @invoice.consumer_id

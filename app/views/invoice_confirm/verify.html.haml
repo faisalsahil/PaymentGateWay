@@ -7,6 +7,8 @@
   = hidden_field_tag :signed_date_time, @invoice.signed_date_time
   = hidden_field_tag :locale, 'en'
   = hidden_field_tag :transaction_type, @invoice.transaction_type
+  = hidden_field_tag :merchant_define_data1, "WC"
+  = hidden_field_tag :customer_ip_address, @invoice.customer_ip_address
   = hidden_field_tag :signature, @signature
   .col-md-4
     %fieldset.fieldset-border
