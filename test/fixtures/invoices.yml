@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  customer_firstname: MyString
-  customer_lastname: MyString
-  customer_email: MyString
-  bill_address1: MyString
-  bill_city: MyString
-  bill_country: MyString
-  client_phone: MyString
+  bill_to_surname: MyString
+  bill_to_forename: MyString
+  bill_to_email: MyString
+  bill_to_address_line1: MyString
+  bill_to_address_city: MyString
+  bill_to_address_country: MyString
+  bill_to_phone: MyString
   amount: 9.99
   currency: MyString
   reference_number: MyString
@@ -15,13 +15,13 @@ one:
   transaction_uuid: MyString
 
 two:
-  customer_firstname: MyString
-  customer_lastname: MyString
-  customer_email: MyString
-  bill_address1: MyString
-  bill_city: MyString
-  bill_country: MyString
-  client_phone: MyString
+  bill_to_surname: MyString
+  bill_to_forename: MyString
+  bill_to_email: MyString
+  bill_to_address_line1: MyString
+  bill_to_address_city: MyString
+  bill_to_address_country: MyString
+  bill_to_phone: MyString
   amount: 9.99
   currency: MyString
   reference_number: MyString

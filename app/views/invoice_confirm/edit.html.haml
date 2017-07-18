@@ -1,0 +1,40 @@
+= simple_form_for(@invoice, url: invoice_confirm_confirm_path, method: :put, :defaults => { :input_html => { :class => "input-text-width" } }) do |f|
+  = f.error_notification
+  = hidden_field_tag :auth_token, params[:auth_token]
+  = hidden_field_tag :security_token, params[:security_token]
+
+  .form-inputs.row
+    .col-md-4
+      %fieldset.fieldset-border
+        %legend.fieldset-border Invoice
+        = f.input :consumer_id, disabled: true
+        = f.input :reference_number, label: 'Invoice Number', disabled: true
+        = f.input :amount, disabled: true
+        = f.currency_select :currency, label: 'Currency', disabled: true
+    .col-md-4
+      %fieldset.fieldset-border
+        %legend.fieldset-border Billing Information
+        = f.input :bill_to_forename
+        = f.input :bill_to_surname
+        = f.input :bill_to_email
+        = f.input :bill_to_address_line1
+        = f.input :bill_to_address_city
+        = f.input :bill_to_address_postal_code
+        = f.input :bill_to_address_state
+        = f.country_select :bill_to_address_country
+        = f.input :bill_to_phone
+    .col-md-4
+      %fieldset.fieldset-border
+        %legend.fieldset-border Shipping Information
+        = f.input :ship_to_forename
+        = f.input :ship_to_surname
+        = f.input :ship_to_address_line1
+        = f.input :ship_to_address_city
+        = f.input :ship_to_address_postal_code
+        = f.input :ship_to_address_state
+        = f.country_select :ship_to_address_country
+        = f.input :ship_to_phone
+  .form-actions
+    = link_to 'Back', invoices_path, class: 'btn btn-default'
+    = f.button :submit, class: 'btn btn-primary'
+

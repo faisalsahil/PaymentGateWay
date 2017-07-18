@@ -17,9 +17,9 @@
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
-        <td><%= invoice.customer_firstname %></td>
-        <td><%= invoice.customer_lastname %></td>
-        <td><%= invoice.customer_email %></td>
+        <td><%= invoice.bill_to_surname %></td>
+        <td><%= invoice.bill_to_forename %></td>
+        <td><%= invoice.bill_to_email %></td>
         <td><%= invoice.amount %></td>
         <td><%= invoice.currency %></td>
         <td><%= invoice.reference_number %></td>
@@ -31,6 +31,15 @@
           <% end %>
         </td>
         <td>
+          <%
+            domain = ENV['HBL_DOMAIN_' + ENV['HBL_MODE']]
+            url = "#{domain}/invoice_confirm/edit?auth_token=#{invoice.auth_token}&security_token=#{invoice.security_token}"
+          %>
+          <%= hidden_field_tag 'client_url', url, class: 'hidden', id:"bar" %>
+
+
+          <%= link_to 'copy url', 'javascript:void(0)', class: 'btn btn-sm btn-primary', data_clipboard_target: "#bar" %>
+
           <%= link_to 'Show', invoice, class: 'btn btn-sm btn-primary' %>
           <%= link_to 'Edit', edit_invoice_path(invoice), class: 'btn btn-sm btn-success' %>
           <%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm  btn-danger' %>
@@ -41,5 +50,10 @@
 </table>
 
 <br>
-
+<% content_for(:third_party_js) do %>
+    <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.10/dist/clipboard.min.js"></script>
+<% end %>
+<script>
+    var clipboard = new Clipboard('.btn');
+</script>
 

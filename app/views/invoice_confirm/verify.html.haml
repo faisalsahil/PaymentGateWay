@@ -1,0 +1,105 @@
+%form#payment_confirmation{:action => "https://testsecureacceptance.cybersource.com/pay", :method => "post"}
+  = hidden_field_tag :access_key, ENV['HBL_ACCESS_KEY_' + ENV['HBL_MODE']]
+  = hidden_field_tag :profile_id, ENV['HBL_PROFILE_KEY_' + ENV['HBL_MODE']]
+  = hidden_field_tag :transaction_uuid, @invoice.transaction_uuid
+  = hidden_field_tag :signed_field_names, @signed_field_names
+  = hidden_field_tag :unsigned_field_names, @unsigned_field_names
+  = hidden_field_tag :signed_date_time, @invoice.signed_date_time
+  = hidden_field_tag :locale, 'en'
+  = hidden_field_tag :transaction_type, @invoice.transaction_type
+  = hidden_field_tag :signature, @signature
+  .col-md-4
+    %fieldset.fieldset-border
+      %legend.fieldset-border Invoice details
+      .col-sm-6 Consumer ID:
+      .col-sm-6= @invoice.consumer_id
+      = hidden_field_tag :consumer_id, @invoice.consumer_id
+  
+      .col-sm-6 Invoice number:
+      .col-sm-6= @invoice.reference_number
+      = hidden_field_tag :reference_number, @invoice.reference_number
+  
+      .col-sm-6 Amount:
+      .col-sm-6= @invoice.amount
+      = hidden_field_tag :amount, @invoice.amount
+  
+      .col-sm-6 Currency:
+      .col-sm-6= @invoice.currency
+      = hidden_field_tag :currency, @invoice.currency
+  .col-md-4
+    %fieldset.fieldset-border
+      %legend.fieldset-border Billing Information
+      .col-sm-6 First Name:
+      .col-sm-6= @invoice.bill_to_forename
+      = hidden_field_tag :bill_to_forename, @invoice.bill_to_forename
+  
+      .col-sm-6 Last Name:
+      .col-sm-6= @invoice.bill_to_surname
+      = hidden_field_tag :bill_to_surname, @invoice.bill_to_surname
+  
+      .col-sm-6 Email:
+      .col-sm-6= @invoice.bill_to_email
+      = hidden_field_tag :bill_to_email, @invoice.bill_to_email
+  
+      .col-sm-6 Billing Address:
+      .col-sm-6= @invoice.bill_to_address_line1
+      = hidden_field_tag :bill_to_address_line1, @invoice.bill_to_address_line1
+  
+      .col-sm-6 Billing City:
+      .col-sm-6= @invoice.bill_to_address_city
+      = hidden_field_tag :bill_to_address_city, @invoice.bill_to_address_city
+  
+      .col-sm-6 Billing Postal Code:
+      .col-sm-6= @invoice.bill_to_address_postal_code
+      = hidden_field_tag :bill_to_address_postal_code, @invoice.bill_to_address_postal_code
+  
+      .col-sm-6 Billing State:
+      .col-sm-6= @invoice.bill_to_address_state
+      = hidden_field_tag :bill_to_address_state, @invoice.bill_to_address_state
+  
+      .col-sm-6 Billing Country:
+      .col-sm-6= @invoice.bill_to_address_country
+      = hidden_field_tag :bill_to_address_country, @invoice.bill_to_address_country
+  
+      .col-sm-6 Phone:
+      .col-sm-6= @invoice.bill_to_phone
+      = hidden_field_tag :bill_to_phone, @invoice.bill_to_phone
+  .col-md-4
+    %fieldset.fieldset-border
+      %legend.fieldset-border Shipping Information
+      .col-sm-6 First Name:
+      .col-sm-6= @invoice.ship_to_forename
+      = hidden_field_tag :ship_to_forename, @invoice.ship_to_forename
+
+      .col-sm-6 Last Name:
+      .col-sm-6= @invoice.ship_to_surname
+      = hidden_field_tag :ship_to_surname, @invoice.ship_to_surname
+
+      .col-sm-6 Shiping Address:
+      .col-sm-6= @invoice.ship_to_address_line1
+      = hidden_field_tag :ship_to_address_line1, @invoice.ship_to_address_line1
+
+      .col-sm-6 Shiping City:
+      .col-sm-6= @invoice.ship_to_address_city
+      = hidden_field_tag :ship_to_address_city, @invoice.ship_to_address_city
+
+      .col-sm-6 Shiping Postal Code:
+      .col-sm-6= @invoice.ship_to_address_postal_code
+      = hidden_field_tag :ship_to_address_postal_code, @invoice.ship_to_address_postal_code
+
+      .col-sm-6 Shiping State:
+      .col-sm-6= @invoice.ship_to_address_state
+      = hidden_field_tag :ship_to_address_state, @invoice.ship_to_address_state
+
+      .col-sm-6 Shiping Country:
+      .col-sm-6= @invoice.ship_to_address_country
+      = hidden_field_tag :ship_to_address_country, @invoice.ship_to_address_country
+
+      .col-sm-6 Phone:
+      .col-sm-6= @invoice.ship_to_phone
+      = hidden_field_tag :ship_to_phone, @invoice.ship_to_phone
+  
+
+
+  = link_to 'Edit', invoice_confirm_edit_path({auth_token: @invoice.auth_token, security_token: @invoice.security_token}), class: 'btn btn-default'
+  %input#submit.btn.btn-primary{:type => "submit", :value => "Confirm"}/

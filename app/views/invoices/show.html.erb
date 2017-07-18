@@ -10,19 +10,19 @@
 <div class="col-md-3">
   <fieldset class="fieldset-border">
     <legend class="fieldset-border">Personal Information</legend>
-    <b>First Name:</b> <%= "#{@invoice.customer_firstname}" %><br>
-    <b>Last Name:</b>  <%= "#{@invoice.customer_lastname}" %><br>
-    <b>Email:</b>      <%= "#{@invoice.customer_email}" %><br>
-    <b>Phone:</b>      <%= "#{@invoice.client_phone}" %><br>
+    <b>First Name:</b> <%= "#{@invoice.bill_to_surname}" %><br>
+    <b>Last Name:</b>  <%= "#{@invoice.bill_to_forename}" %><br>
+    <b>Email:</b>      <%= "#{@invoice.bill_to_email}" %><br>
+    <b>Phone:</b>      <%= "#{@invoice.bill_to_phone}" %><br>
   </fieldset>
 </div>
 
 <div class="col-md-3">
   <fieldset class="fieldset-border">
     <legend class="fieldset-border">Billing Information</legend>
-    <b>Billing Address:</b>   <%= "#{@invoice.bill_address1}" %><br>
-    <b>Billing City:</b>      <%= "#{@invoice.bill_city}" %><br>
-    <b>Billing Country:</b>   <%= "#{@invoice.bill_country}" %><br>
+    <b>Billing Address:</b>   <%= "#{@invoice.bill_to_address_line1}" %><br>
+    <b>Billing City:</b>      <%= "#{@invoice.bill_to_address_city}" %><br>
+    <b>Billing Country:</b>   <%= "#{@invoice.bill_to_address_country}" %><br>
   </fieldset>
 </div>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>

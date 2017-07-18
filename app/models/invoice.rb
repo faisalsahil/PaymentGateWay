@@ -2,7 +2,7 @@ class Invoice < ApplicationRecord
   
   attr_accessor :is_confirm_invoice
   
-  
+  validates :consumer_id, presence: true
   validates :reference_number, presence: true
   validates :amount, presence: true
   validates :currency, presence: true
@@ -12,14 +12,25 @@ class Invoice < ApplicationRecord
   validates :transaction_type, presence: true
 
   with_options if: :is_confirm_invoice do |br|
-    br.validates :customer_firstname, presence: true
-    br.validates :customer_lastname, presence: true
+    br.validates :bill_to_forename, presence: true
+    br.validates :bill_to_surname, presence: true
+    br.validates :bill_to_email, presence: true
+    br.validates :bill_to_address_line1, presence: true
+    br.validates :bill_to_address_city, presence: true
+    br.validates :bill_to_address_postal_code, presence: true
+    br.validates :bill_to_address_state, presence: true
+    br.validates :bill_to_address_country, presence: true
+    br.validates :bill_to_phone, presence: true
     
-    br.validates :customer_email, presence: true
-    br.validates :bill_address1, presence: true
-    br.validates :bill_country, presence: true
-    br.validates :client_phone, presence: true
+    br.validates :ship_to_forename, presence: true
+    br.validates :ship_to_surname, presence: true
+    br.validates :ship_to_address_line1, presence: true
+    br.validates :ship_to_address_city, presence: true
+    br.validates :ship_to_address_postal_code, presence: true
+    br.validates :ship_to_address_state, presence: true
+    br.validates :ship_to_address_country, presence: true
+    br.validates :ship_to_phone, presence: true
   end
 
-  
+
 end

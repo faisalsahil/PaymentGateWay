@@ -17,7 +17,7 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create invoice" do
     assert_difference('Invoice.count') do
-      post invoices_url, params: { invoice: { amount: @invoice.amount, bill_address1: @invoice.bill_address1, bill_city: @invoice.bill_city, bill_country: @invoice.bill_country, client_phone: @invoice.client_phone, currency: @invoice.currency, customer_email: @invoice.customer_email, customer_firstname: @invoice.customer_firstname, customer_lastname: @invoice.customer_lastname, reference_number: @invoice.reference_number, transaction_type: @invoice.transaction_type, transaction_uuid: @invoice.transaction_uuid } }
+      post invoices_url, params: { invoice: { amount: @invoice.amount, bill_to_address_line1: @invoice.bill_to_address_line1, bill_to_address_city: @invoice.bill_to_address_city, bill_to_address_country: @invoice.bill_to_address_country, bill_to_phone: @invoice.bill_to_phone, currency: @invoice.currency, bill_to_email: @invoice.bill_to_email, bill_to_surname: @invoice.bill_to_surname, bill_to_forename: @invoice.bill_to_forename, reference_number: @invoice.reference_number, transaction_type: @invoice.transaction_type, transaction_uuid: @invoice.transaction_uuid } }
     end
 
     assert_redirected_to invoice_url(Invoice.last)
@@ -34,7 +34,7 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update invoice" do
-    patch invoice_url(@invoice), params: { invoice: { amount: @invoice.amount, bill_address1: @invoice.bill_address1, bill_city: @invoice.bill_city, bill_country: @invoice.bill_country, client_phone: @invoice.client_phone, currency: @invoice.currency, customer_email: @invoice.customer_email, customer_firstname: @invoice.customer_firstname, customer_lastname: @invoice.customer_lastname, reference_number: @invoice.reference_number, transaction_type: @invoice.transaction_type, transaction_uuid: @invoice.transaction_uuid } }
+    patch invoice_url(@invoice), params: { invoice: { amount: @invoice.amount, bill_to_address_line1: @invoice.bill_to_address_line1, bill_to_address_city: @invoice.bill_to_address_city, bill_to_address_country: @invoice.bill_to_address_country, bill_to_phone: @invoice.bill_to_phone, currency: @invoice.currency, bill_to_email: @invoice.bill_to_email, bill_to_surname: @invoice.bill_to_surname, bill_to_forename: @invoice.bill_to_forename, reference_number: @invoice.reference_number, transaction_type: @invoice.transaction_type, transaction_uuid: @invoice.transaction_uuid } }
     assert_redirected_to invoice_url(@invoice)
   end
 
