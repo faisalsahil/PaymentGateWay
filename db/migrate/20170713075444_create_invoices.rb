@@ -31,7 +31,7 @@ class CreateInvoices < ActiveRecord::Migration[5.0]
       t.string :req_device_fingerprint_id
       t.string :decision
       t.string :message
-      t.string :transaction_ida
+      t.string :transaction_id
       t.string :payer_authentication_xid
       
       t.string :transaction_type, :null => false
