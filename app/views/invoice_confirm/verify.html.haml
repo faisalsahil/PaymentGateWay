@@ -1,4 +1,4 @@
-%form#payment_confirmation{:action => "https://testsecureacceptance.cybersource.com/pay", :method => "post"}
+%form#payment_confirmation{:action => ENV['HBL_SUBMIT_FORM_URL_' + ENV['HBL_MODE']], :method => "post"}
   = hidden_field_tag :access_key, ENV['HBL_ACCESS_KEY_' + ENV['HBL_MODE']]
   = hidden_field_tag :profile_id, ENV['HBL_PROFILE_KEY_' + ENV['HBL_MODE']]
   = hidden_field_tag :transaction_uuid, @invoice.transaction_uuid
