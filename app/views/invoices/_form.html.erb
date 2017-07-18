@@ -1,4 +1,4 @@
-<%= simple_form_for(@invoice) do |f| %>
+<%= simple_form_for(@invoice, :defaults => { :input_html => { :class => "input-text-width" } }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs row">
@@ -7,7 +7,7 @@
         <legend class="fieldset-border">Invoice</legend>
         <%= f.input :reference_number, label: 'Invoice Number' %>
         <br/>
-        <%= f.input :amount %>
+        <%= f.input :amount, class: 'input-text-width' %>
         <br/>
         <label>Select currency</label>
         <%= f.currency_select :currency, {}, {}, html_options = {style: "width:100%;"} %>
@@ -18,7 +18,6 @@
         <br/>
       </fieldset>
     </div>
-
     <div class="col-md-3">
       <fieldset class="fieldset-border">
         <legend class="fieldset-border">Personal Information</legend>

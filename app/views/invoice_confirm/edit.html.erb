@@ -5,7 +5,7 @@
       <div class="col-md-3">
         <fieldset class="fieldset-border">
           <legend class="fieldset-border">Invoice</legend>
-          <%= f.input :reference_number, label: 'Invoice Number', disabled: true %>
+          <%= f.input :reference_number, label: 'Invoice Number', disabled: true, class: 'input-text-width' %>
           <br/>
           <%= f.input :amount, disabled: true %>
           <br/>
@@ -23,7 +23,7 @@
       <div class="col-md-3">
         <fieldset class="fieldset-border">
           <legend class="fieldset-border">Personal Information</legend>
-          <%= f.input :customer_firstname %>
+          <%= f.input :customer_firstname, class: 'input-text-width' %>
           <br/>
           <%= f.input :customer_lastname %>
           <br/>
