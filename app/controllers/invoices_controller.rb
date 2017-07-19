@@ -24,13 +24,44 @@ class InvoicesController < ApplicationController
     @invoice.transaction_uuid = SecureRandom.uuid
     @invoice.transaction_type = 'authorization'
     
+    
     respond_to do |format|
       if @invoice.save
-        format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
-        format.json { render :show, status: :created, location: @invoice }
+        format.html { redirect_to invoices_path, notice: 'Invoice was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @invoice.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  
+  def copy
+    @old_invoice = Invoice.find_by_id(params[:id])
+    @invoice     = @old_invoice.dup
+    
+    # @invoice.parent_id        = @old_invoice.id
+    @invoice.auth_token       = SecureRandom.uuid
+    @invoice.security_token   = SecureRandom.hex(16)
+    @invoice.transaction_uuid = SecureRandom.uuid
+    @invoice.transaction_type = 'authorization'
+    
+    @invoice.signed_date_time    = nil
+    @invoice.invoice_status      = 'pending'
+    @invoice.customer_ip_address = nil
+    
+    @invoice.req_card_expiry_date      = nil
+    @invoice.reason_code               = nil
+    @invoice.req_device_fingerprint_id = nil
+    @invoice.decision                  = nil
+    @invoice.message                   = nil
+    @invoice.transaction_id            = nil
+    @invoice.payer_authentication_xid  = nil
+    
+    respond_to do |format|
+      if @invoice.save
+        format.html { redirect_to invoices_path, notice: 'Invoice was successfully copied.' }
+      else
+        format.html { render :new }
       end
     end
   end

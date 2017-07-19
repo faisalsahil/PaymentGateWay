@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   # post 'invoice_confirm/failure'
   
 
-  resources :invoices
+  resources :invoices do
+    member do
+      get :copy
+    end
+  end
   # get 'dashboard/index'
 
   root 'invoices#index'
