@@ -31,14 +31,9 @@
           <% end %>
         </td>
         <td>
-          <%
-            domain = ENV['HBL_DOMAIN_' + ENV['HBL_MODE']]
-            url = "#{domain}/invoice_confirm/edit?auth_token=#{invoice.auth_token}&security_token=#{invoice.security_token}"
-          %>
-          <%= hidden_field_tag 'client_url', url, class: 'hidden', id:"bar" %>
-
-
-          <%= link_to 'copy url', 'javascript:void(0)', class: 'btn btn-sm btn-primary', data_clipboard_target: "#bar" %>
+          <%# url = invoice_confirm_edit_url({auth_token: invoice.auth_token, security_token: invoice.security_token}) %>
+          <%#= hidden_field_tag 'client_url', url, class: 'hidden', id:"bar" %>
+          <%#= link_to 'copy url', 'javascript:void(0)', class: 'btn btn-sm btn-primary', data_clipboard_target: "#bar" %>
 
           <%= link_to 'Show', invoice, class: 'btn btn-sm btn-primary' %>
           <%= link_to 'Edit', edit_invoice_path(invoice), class: 'btn btn-sm btn-success' %>

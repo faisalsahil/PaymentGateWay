@@ -23,6 +23,8 @@
     .col-md-4
       %fieldset.fieldset-border
         %legend.fieldset-border Shipping Information
+        = f.check_box :contact_same_as_above, {class: 'contact_same_as'}, true, false
+        = f.label :contact_same_as_above, 'Same as billing information?', style: 'display: inline-block;'
         = f.input :ship_to_forename
         = f.input :ship_to_surname
         = f.input :ship_to_address_line1

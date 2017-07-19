@@ -1,6 +1,6 @@
 class Invoice < ApplicationRecord
   
-  attr_accessor :is_confirm_invoice
+  attr_accessor :is_confirm_invoice, :contact_same_as_above
   
   validates :consumer_id, presence: true
   validates :reference_number, presence: true
