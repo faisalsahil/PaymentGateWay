@@ -10,13 +10,13 @@
         = f.input :consumer_id, disabled: true
         = f.input :reference_number, label: 'Invoice Number', disabled: true
         = f.input :amount, disabled: true
-        = f.currency_select :currency, label: 'Currency', disabled: true
+        = f.currency_select :currency, {}, {}, html_options = {style: "width:100%;", disabled: true}
     .col-md-4
       %fieldset.fieldset-border
         %legend.fieldset-border Billing Information
+        = f.input :bill_to_email
         = f.input :bill_to_forename
         = f.input :bill_to_surname
-        = f.input :bill_to_email
         = f.input :bill_to_address_line1
         = f.input :bill_to_address_city
         = f.input :bill_to_address_postal_code
@@ -26,6 +26,12 @@
     .col-md-4
       %fieldset.fieldset-border
         %legend.fieldset-border Shipping Information
+        %br
+        = f.check_box :contact_same_as_above, {class: 'contact_same_as'}, true, false
+        = f.label :contact_same_as_above, 'Same as billing information?', style: 'display: inline-block;'
+        %br
+        %br
+        %br
         = f.input :ship_to_forename
         = f.input :ship_to_surname
         = f.input :ship_to_address_line1

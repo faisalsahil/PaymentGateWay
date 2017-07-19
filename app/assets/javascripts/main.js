@@ -19,7 +19,7 @@ $(document).ready(function () {
             $('#invoice_ship_to_address_country').val(invoice_bill_to_address_country);
             $('#invoice_ship_to_phone').val(invoice_bill_to_phone);
         } else {
-            alert(this.checked);
+            // alert(this.checked);
         }
     });
 });

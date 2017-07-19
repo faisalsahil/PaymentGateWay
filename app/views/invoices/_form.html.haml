@@ -7,7 +7,7 @@
         = f.input :consumer_id
         = f.input :reference_number, label: 'Invoice Number'
         = f.input :amount
-        = f.currency_select :currency, label: 'Currency'
+        = f.currency_select :currency, {}, {}, html_options = {style: "width:100%;"}
     .col-md-4
       %fieldset.fieldset-border
         %legend.fieldset-border Billing Information
