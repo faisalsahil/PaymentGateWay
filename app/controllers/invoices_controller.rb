@@ -90,7 +90,7 @@ class InvoicesController < ApplicationController
   
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
-      username == "appsgenii" && password == "payments"
+      username ==  ENV['HBL_AUTH_USERNAME_' + ENV['HBL_MODE']] && password == ENV['HBL_AUTH_PASSWORD_' + ENV['HBL_MODE']]
     end
   end
   
