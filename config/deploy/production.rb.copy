@@ -1,7 +1,7 @@
-server '45.79.128.192', user: 'payments', roles: %w{app db web}
+server '172.104.12.49', user: 'live', roles: %w{app db web}
 
 set :application, 'HBLPaymentGateway'
 
-set :deploy_to, '/home/payments/HBLPaymentGateway'
+set :deploy_to, '/home/live/HBLPaymentGateway'
 
 set :repo_url, 'git@gitrepos.com:rubyonrails/HBLPaymentGateway.git'
