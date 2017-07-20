@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'invoice_confirm/verify'
   put 'invoice_confirm/confirm'
   
-  post 'invoice_confirm/success'
+  post 'invoice_confirm/response'
   # post 'invoice_confirm/failure'
   
 
