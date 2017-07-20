@@ -15,6 +15,7 @@ set :branch, ask('Enter Git Branch:', 'master')
 set :linked_files, fetch(:linked_files, []).push('config/database.yml',
                                                  '.env.development',
                                                  '.env.production',
+                                                 '.env.staging',
                                                  'config/schedule.rb',
                                                  'config/environments/development.rb',
                                                  'config/environments/staging.rb',
