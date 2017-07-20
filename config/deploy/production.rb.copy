@@ -5,3 +5,5 @@ set :application, 'HBLPaymentGateway'
 set :deploy_to, '/home/live/HBLPaymentGateway'
 
 set :repo_url, 'git@gitrepos.com:rubyonrails/HBLPaymentGateway.git'
+
+set :tmp_dir, '/home/live/tmp'

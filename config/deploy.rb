@@ -11,8 +11,6 @@ set :pty, true
 
 set :branch, ask('Enter Git Branch:', 'master')
 
-set :tmp_dir, '/home/payments/tmp'
-
 # Default value for :linked_files is []
 set :linked_files, fetch(:linked_files, []).push('config/database.yml',
                                                  '.env.development',
