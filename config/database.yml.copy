@@ -11,3 +11,10 @@ production:
   database: <%= ENV['HBL_DB_NAME_' + ENV['HBL_MODE']]%>
   username: <%= ENV['HBL_DB_USERNAME_' + ENV['HBL_MODE']]%>
   password: <%= ENV['HBL_DB_PASSWORD_' + ENV['HBL_MODE']]%>
+
+staging:
+  adapter: mysql2
+  encoding: utf8
+  database: <%= ENV['HBL_DB_NAME_' + ENV['HBL_MODE']]%>
+  username: <%= ENV['HBL_DB_USERNAME_' + ENV['HBL_MODE']]%>
+  password: <%= ENV['HBL_DB_PASSWORD_' + ENV['HBL_MODE']]%>
