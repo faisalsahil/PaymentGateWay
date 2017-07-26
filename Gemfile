@@ -40,6 +40,8 @@ gem 'rest-client'
 
 gem 'ruby-hmac'
 
+gem "rolify"
+
 gem 'sass-rails'
 
 gem 'simple_form'

@@ -1,0 +1,14 @@
+%h1 Users
+= link_to 'Add User', '#', class: 'btn btn-primary pull-right'
+%table.table.table-striped
+  %thead
+    %tr
+      %th Email
+      %th Role
+      %th Actions
+  %tbody
+    - @users&.each do |user|
+      %tr
+        %td= user.email
+        %td= 'Customer'
+        %td

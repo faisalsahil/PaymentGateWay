@@ -93,7 +93,7 @@ class InvoicesController < ApplicationController
       username ==  ENV['HBL_AUTH_USERNAME_' + ENV['HBL_MODE']] && password == ENV['HBL_AUTH_PASSWORD_' + ENV['HBL_MODE']]
     end
   end
-  
+    
   private
   def set_invoice
     @invoice = Invoice.find(params[:id])
