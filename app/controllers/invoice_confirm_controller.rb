@@ -95,7 +95,7 @@ class InvoiceConfirmController < ApplicationController
       @invoice.message                   = params[:message]
       @invoice.transaction_id            = params[:transaction_id]
       @invoice.payer_authentication_xid  = params[:payer_authentication_xid]
-      @invoice.save
+      @invoice.save!
       
       # Send email to admin and client
       UserMailer.transaction_email(1, @invoice.id).deliver_later

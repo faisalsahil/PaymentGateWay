@@ -105,6 +105,10 @@ class InvoicesController < ApplicationController
     end
   end
   
+  # def failure
+  #   UserMailer.transaction_email(1, Invoice.last.id).deliver_later
+  # end
+  
   protected
   
   def authenticate
