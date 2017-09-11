@@ -49,7 +49,12 @@
 <% content_for(:third_party_js) do %>
     <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.10/dist/clipboard.min.js"></script>
 <% end %>
-<script>
-    var clipboard = new Clipboard('.btn');
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').focus()
+        })
+    });
+
 </script>
 
