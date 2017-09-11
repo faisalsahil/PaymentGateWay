@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+  
   get 'users/index'
 
   devise_for :users
@@ -16,6 +20,10 @@ Rails.application.routes.draw do
   resources :invoices do
     member do
       get :copy
+      get :reset
+    end
+    collection do
+      get :failure
     end
   end
   # get 'dashboard/index'

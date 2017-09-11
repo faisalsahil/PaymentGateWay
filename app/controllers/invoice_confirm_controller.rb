@@ -9,7 +9,6 @@ class InvoiceConfirmController < ApplicationController
     end
   end
   
-  
   def confirm
     @invoice = Invoice.find_by_auth_token_and_security_token(params[:auth_token], params[:security_token])
     
@@ -21,8 +20,12 @@ class InvoiceConfirmController < ApplicationController
       @invoice.customer_ip_address = request.remote_ip
       
       respond_to do |format|
-        if @invoice.save
-          format.html { redirect_to invoice_confirm_verify_path({ auth_token: params[:auth_token], security_token: params[:security_token] }) }
+        if params[:invoice][:is_terms_and_conditions_accepted] == "1"
+          if @invoice.save
+            format.html { redirect_to invoice_confirm_verify_path({ auth_token: params[:auth_token], security_token: params[:security_token] }) }
+          else
+            format.html { render :edit }
+          end
         else
           format.html { render :edit }
         end
@@ -31,7 +34,6 @@ class InvoiceConfirmController < ApplicationController
       render plain: "Invoice not found"
     end
   end
-  
   
   def verify
     @invoice = Invoice.find_by_auth_token_and_security_token(params[:auth_token], params[:security_token])
@@ -94,11 +96,10 @@ class InvoiceConfirmController < ApplicationController
       @invoice.transaction_id            = params[:transaction_id]
       @invoice.payer_authentication_xid  = params[:payer_authentication_xid]
       @invoice.save
+      
+      # Send email to admin and client
+      UserMailer.transaction_email(1, @invoice.id).deliver_later
     end
-  end
-  
-  def failure
-  
   end
   
   private

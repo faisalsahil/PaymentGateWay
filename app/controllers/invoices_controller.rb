@@ -34,10 +34,29 @@ class InvoicesController < ApplicationController
     end
   end
   
+  def reset
+    @invoice = Invoice.find_by_id(params[:id])
+    
+    @invoice.auth_token       = SecureRandom.uuid
+    @invoice.security_token   = SecureRandom.hex(16)
+    @invoice.transaction_uuid = SecureRandom.uuid
+    @invoice.transaction_type = 'authorization'
+    @invoice.invoice_status   = 'pending'
+    @invoice.decision         = 'pending'
+    
+    respond_to do |format|
+      if @invoice.save
+        format.html { redirect_to invoices_path, notice: 'Invoice was successfully reset' }
+      else
+        format.html { render :new }
+      end
+    end
+  end
+  
   
   def copy
-    @old_invoice = Invoice.find_by_id(params[:id])
-    @invoice     = @old_invoice.dup
+    @old_invoice              = Invoice.find_by_id(params[:id])
+    @invoice                  = @old_invoice.dup
     
     # @invoice.parent_id        = @old_invoice.id
     @invoice.auth_token       = SecureRandom.uuid
@@ -90,10 +109,10 @@ class InvoicesController < ApplicationController
   
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
-      username ==  ENV['HBL_AUTH_USERNAME_' + ENV['HBL_MODE']] && password == ENV['HBL_AUTH_PASSWORD_' + ENV['HBL_MODE']]
+      username == ENV['HBL_AUTH_USERNAME_' + ENV['HBL_MODE']] && password == ENV['HBL_AUTH_PASSWORD_' + ENV['HBL_MODE']]
     end
   end
-    
+  
   private
   def set_invoice
     @invoice = Invoice.find(params[:id])

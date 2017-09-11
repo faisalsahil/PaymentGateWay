@@ -3,12 +3,13 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>First name</th>
-      <th>Last name</th>
+      <th>Date</th>
+      <th>Full Name</th>
       <th>Email</th>
       <th>Amount</th>
       <th>Currency</th>
       <th>Invoice Number</th>
+      <th>Status</th>
       <th>Checkout Link</th>
       <th>Actions</th>
     </tr>
@@ -17,14 +18,15 @@
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
-        <td><%= invoice.bill_to_surname %></td>
-        <td><%= invoice.bill_to_forename %></td>
+        <td><%= invoice.created_at.to_date.strftime('%d/%m/%Y') %></td>
+        <td><%= "#{invoice.bill_to_surname} #{invoice.bill_to_forename}" %></td>
         <td><%= invoice.bill_to_email %></td>
         <td><%= invoice.amount %></td>
         <td><%= invoice.currency %></td>
         <td><%= invoice.reference_number %></td>
+        <td><%= "#{invoice.decision}" %></td>
         <td>
-          <% if invoice.invoice_status == 'pending' %>
+          <% if invoice.decision == 'pending' %>
             <%= link_to "Checkout link", invoice_confirm_edit_path({auth_token: invoice.auth_token, security_token: invoice.security_token}) %>
           <% else %>
             <%= "#{invoice.decision}" %>
@@ -36,6 +38,9 @@
           <%#= link_to 'copy url', 'javascript:void(0)', class: 'btn btn-sm btn-primary', data_clipboard_target: "#bar" %>
 
           <%= link_to 'Show', invoice, class: 'btn btn-sm btn-primary' %>
+          <% if invoice.decision == 'rejected' || invoice.decision == 'declined' || invoice.decision == 'other' %>
+            <%= link_to 'Reset', reset_invoice_path(invoice), class: 'btn btn-sm btn-success' %>
+          <% end %>
           <%= link_to 'Copy', copy_invoice_path(invoice), class: 'btn btn-sm btn-warning' %>
           <%= link_to 'Edit', edit_invoice_path(invoice), class: 'btn btn-sm btn-success' %>
           <%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm  btn-danger' %>

@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 # gem 'api-auth', '~> 2.0'
+gem 'aasm'
 
 gem 'bootstrap-sass'
 

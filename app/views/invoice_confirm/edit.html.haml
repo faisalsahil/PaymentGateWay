@@ -11,6 +11,39 @@
         = f.input :reference_number, label: 'Invoice Number', disabled: true
         = f.input :amount, disabled: true
         = f.currency_select :currency, {}, {}, html_options = {style: "width:100%;", disabled: true}
+        %br
+        %br
+        - str = "I, the card owner hereby warrants that The source of funds are good, clean and clear, of non-criminal origin, free from any lines and encumbrances, freely transferable and are payable in cash immediately, same day immediate credit upon receipt by the receiving bank. <br/> I, the card Owner also hereby attest and warrant I have never been convicted under, or been the subject of, any investigation with respect to: The Bank Secrecy Act/Anti-Money Laundering (Latest Version); and The Drug Trafficking Act of Pakistan (latest version); and The Criminal Act of Pakistan (latest version); and The Prevention of Terrorism Act of Pakistan (latest version); and The Criminal Justice (International Cooperation) Act of Pakistan (latest version); and The Criminal Justice Act of Pakistan (latest version): and The Electronic Funds Transfer Act Pakistan (latest version). This authorisation is voluntarily and allow the Merchant to transfer funds from my MaterCard / Visa card, under the management of AppsGenii Technologies (Pvt.) Ltd. I do hereby waive / deny my right to file for any claim or demand for any charge back against the amount authorised to be transferred in this Invoice against.".html_safe
+        -#= text_area_tag(:terms_condition,
+          content = str.html_safe,
+            options = {:size =>"38x5" })
+        %div.terms_condition_div
+          %p
+            == I, the card owner hereby warrants that The source of funds are good, clean and clear, of non-criminal origin, free from any lines and encumbrances, freely transferable and are payable in cash immediately, same day immediate credit upon receipt by the receiving bank.
+            %br
+            == I, the card Owner also hereby attest and warrant I have never been convicted under, or been the subject of, any investigation with respect to:
+          %ol
+            %li== The Bank Secrecy Act/Anti-Money Laundering (Latest Version); and
+
+            %li== The Drug Trafficking Act of Pakistan (latest version); and
+
+            %li== The Criminal Act of Pakistan (latest version); and
+
+            %li== The Prevention of Terrorism Act of Pakistan (latest version); and
+
+            %li== The Criminal Justice (International Cooperation) Act of Pakistan (latest version); and
+
+            %li== The Criminal Justice Act of Pakistan (latest version): and
+
+            %li== The Electronic Funds Transfer Act Pakistan (latest version).
+
+          %p
+            ==This authorisation is voluntarily and allow the Merchant to transfer funds from my MaterCard / Visa card, under the management of AppsGenii Technologies (Pvt.) Ltd.
+            %br
+            ==I do hereby waive / deny my right to file for any claim or demand for any charge back against the amount authorised to be transferred in this Invoice against.
+        %br
+        = f.check_box :is_terms_and_conditions_accepted
+        == I accept terms & conditions
     .col-md-4
       %fieldset.fieldset-border
         %legend.fieldset-border Billing Information

@@ -1,0 +1,83 @@
+.col-md-4
+  %fieldset.fieldset-border
+    %legend.fieldset-border Invoice details
+    .col-sm-6 Transaction UUID:
+    .col-sm-6= @invoice.transaction_uuid
+
+    .col-sm-6 Invoice number:
+    .col-sm-6= @invoice.reference_number
+
+    .col-sm-6 Amount:
+    .col-sm-6= @invoice.amount
+
+    .col-sm-6 Currency:
+    .col-sm-6= @invoice.currency
+
+    .col-sm-6 Decision:
+    .col-sm-6= @invoice.decision || "nil"
+
+    .col-sm-6 Message:
+    .col-sm-6= @invoice.message || "nil"
+
+    .col-sm-6 Transaction ID:
+    .col-sm-6= @invoice.transaction_id || "nil"
+
+    .col-sm-6 Reason Code:
+    .col-sm-6= @invoice.reason_code || "nil"
+
+.col-md-4
+  %fieldset.fieldset-border
+    %legend.fieldset-border Billing Information
+    .col-sm-6 First Name:
+    .col-sm-6= @invoice.bill_to_surname
+
+    .col-sm-6 Last Name:
+    .col-sm-6= @invoice.bill_to_forename
+
+    .col-sm-6 Email:
+    .col-sm-6= @invoice.bill_to_email
+
+    .col-sm-6 Address Line1:
+    .col-sm-6= @invoice.bill_to_address_line1
+
+    .col-sm-6 City:
+    .col-sm-6= @invoice.bill_to_address_city
+
+    .col-sm-6 Postal Code:
+    .col-sm-6= @invoice.bill_to_address_postal_code
+
+    .col-sm-6 State:
+    .col-sm-6= @invoice.bill_to_address_state
+
+    .col-sm-6 Country:
+    .col-sm-6= @invoice.bill_to_address_country
+
+    .col-sm-6 Phone:
+    .col-sm-6= @invoice.bill_to_phone
+
+.col-md-4
+  %fieldset.fieldset-border
+    %legend.fieldset-border Shipping Information
+    .col-sm-6 First Name:
+    .col-sm-6= @invoice.ship_to_surname
+
+    .col-sm-6 Last Name:
+    .col-sm-6= @invoice.ship_to_forename
+
+    .col-sm-6 Address Line1:
+    .col-sm-6= @invoice.ship_to_address_line1
+
+    .col-sm-6 City:
+    .col-sm-6= @invoice.ship_to_address_city
+
+    .col-sm-6 Postal Code:
+    .col-sm-6= @invoice.ship_to_address_postal_code
+
+    .col-sm-6 State:
+    .col-sm-6= @invoice.ship_to_address_state
+
+    .col-sm-6 Country:
+    .col-sm-6= @invoice.ship_to_address_country
+
+    .col-sm-6 Phone:
+    .col-sm-6= @invoice.ship_to_phone
