@@ -83,7 +83,7 @@ class InvoiceConfirmController < ApplicationController
   
   end
   
-  def transaction_response
+  def response
     @invoice = Invoice.find_by_transaction_uuid(params[:req_transaction_uuid])
     if @invoice.present?
       @invoice.req_card_expiry_date      = params[:req_card_expiry_date]
